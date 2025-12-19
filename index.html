@@ -139,29 +139,7 @@ btnmode.addEventListener("click", () => {
   }
 });
 
-const newsContainer = document.getElementById("news");
-const apiKey = "1cb2258d1ba34d8d81f5e149b79e3d3c";
 
-fetch(`https://newsapi.org/v2/top-headlines?country=us&pageSize=6&apiKey=${apiKey}`)
-  .then(response => response.json())
-  .then(data => {
-    data.articles.forEach(article => {
-      const card = document.createElement("div");
-      card.className = "news-card";
-
-      card.innerHTML = `
-        <img src="${article.urlToImage || 'https://via.placeholder.com/300'}">
-        <h3>${article.title}</h3>
-        <p>${article.description || ''}</p>
-        <a href="${article.url}" target="_blank">Read more</a>
-      `;
-
-      newsContainer.appendChild(card);
-    });
-  })
-  .catch(error => {
-    newsContainer.innerHTML = "Failed to load news.";
-  });
 
 </script>
 
@@ -169,4 +147,5 @@ fetch(`https://newsapi.org/v2/top-headlines?country=us&pageSize=6&apiKey=${apiKe
 
 </body>
 </html>
+
 
